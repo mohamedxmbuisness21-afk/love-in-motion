@@ -1,0 +1,268 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+
+  background: linear-gradient(135deg, #10091f, #24102f, #160c29);
+
+  color: white;
+}
+
+/* Background Glow */
+
+.background-glow {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: #ff168b;
+  filter: blur(150px);
+  opacity: 0.25;
+  border-radius: 50%;
+}
+
+/* Main Container */
+
+.container {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 550px;
+  padding: 60px 30px;
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+
+  backdrop-filter: blur(15px);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.3);
+}
+
+/* Heart */
+
+.heart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  margin-bottom: 25px;
+}
+
+.heart {
+  animation: heartbeat 1.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px #ff168b);
+}
+
+.heart-shape {
+  position: relative;
+  width: 110px;
+  height: 110px;
+
+  background: linear-gradient(135deg, #ff9acb, #ff168b 50%, #bd005f);
+
+  transform: rotate(-45deg);
+  border-radius: 12px;
+
+  box-shadow:
+    inset -10px -10px 20px rgba(120, 0, 70, 0.3),
+    inset 8px 8px 15px rgba(255, 255, 255, 0.35),
+    0 0 35px rgba(255, 22, 139, 0.6);
+}
+
+.heart-shape::before,
+.heart-shape::after {
+  content: "";
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.heart-shape::before {
+  top: -55px;
+  left: 0;
+}
+
+.heart-shape::after {
+  top: 0;
+  right: -55px;
+}
+
+/* Heart Animation */
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1.15);
+  }
+
+  30% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.1);
+  }
+
+  60% {
+    transform: scale(1);
+  }
+}
+
+/* Text Content */
+
+.content h1 {
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  background: linear-gradient(90deg, #ffb6d9, #ff168b);
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  animation: fadeUp 1s ease forwards;
+}
+
+.description {
+  max-width: 380px;
+  margin: 15px auto;
+  color: #d5c4db;
+  font-size: 14px;
+  line-height: 1.9;
+
+  opacity: 0;
+  animation: fadeUp 1s ease 0.5s forwards;
+}
+
+.divider {
+  width: 55px;
+  height: 3px;
+  margin: 25px auto;
+  background: #ff168b;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #ff168b;
+}
+
+.bottom-text {
+  color: #a99bb4;
+  font-size: 12px;
+
+  opacity: 0;
+  animation: fadeUp 1s ease 1s forwards;
+}
+
+.bottom-text span {
+  color: #ff168b;
+}
+
+/* Text Animation */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating Hearts */
+
+.floating-hearts span {
+  position: absolute;
+  bottom: -50px;
+  color: #ff4da6;
+  opacity: 0;
+  font-size: 20px;
+  animation: floating 8s linear infinite;
+}
+
+.floating-hearts span:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-hearts span:nth-child(2) {
+  left: 25%;
+  animation-delay: 2s;
+}
+
+.floating-hearts span:nth-child(3) {
+  left: 40%;
+  animation-delay: 4s;
+}
+
+.floating-hearts span:nth-child(4) {
+  left: 55%;
+  animation-delay: 1s;
+}
+
+.floating-hearts span:nth-child(5) {
+  left: 70%;
+  animation-delay: 3s;
+}
+
+.floating-hearts span:nth-child(6) {
+  left: 85%;
+  animation-delay: 5s;
+}
+
+.floating-hearts span:nth-child(7) {
+  left: 95%;
+  animation-delay: 6s;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.6;
+  }
+
+  80% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+
+@media (max-width: 500px) {
+  .container {
+    padding: 45px 20px;
+  }
+
+  .content h1 {
+    font-size: 28px;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+}
